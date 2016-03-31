@@ -1,0 +1,31 @@
+{
+  "name": "string-to-path",
+  "version": "0.0.1",
+  "description": "Convert string to svg path.",
+  "main": "index.js",
+  "author": "bubkoo",
+  "license": "MIT",
+  "keywords": [
+    "convert",
+    "string",
+    "svg",
+    "path",
+    "pathdata",
+    "graphics",
+    "fonts"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bubkoo/string-to-path.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bubkoo/string-to-path/issues"
+  },
+  "homepage": "https://github.com/bubkoo/string-to-path#readme",
+  "dependencies": {
+    "opentype.js": "^0.6.2"
+  }
+}
