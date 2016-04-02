@@ -144,29 +144,23 @@ StringToPath.prototype.toPath = function (text, options) {
 
   options = options || {};
 
-  var attr = options.path;
-  var comm = parseAttr(attr);
-
+  var attr     = options.path;
   var result   = this.toPathData(text, options);
   var pathData = result.pathData;
 
   if (Array.isArray(pathData)) {
-    result.path = pathData.map(function (pathData, index) {
-      if (!pathData) {
+    result.path = pathData.map(function (data, index) {
+
+      if (!data) {
         return '';
       }
 
-      var curr  = comm;
       var attrX = options['path' + index];
-      if (attrX) {
-        curr = attr
-          ? parseAttr(mergeAttr(attr, attrX))
-          : parseAttr(attrX);
-      }
-      return '<path' + curr + ' d="' + pathData + '"></path>';
+
+      return buildElement('path', mergeAttr(attr, attrX, { d: data }));
     });
   } else {
-    result.path = '<path' + comm + ' d="' + pathData + '"></path>';
+    result.path = buildElement('path', mergeAttr(attr, { d: pathData }));
   }
 
   return result;
@@ -176,21 +170,35 @@ StringToPath.prototype.toSVG = function (text, options) {
 
   options = options || {};
 
-  var x = options.x || 0;
-  var y = options.y || 0;
+  var content = '';
+  var title   = options.title || text;
+  var desc    = options.desc;
 
+  if (title) {
+    content += buildElement('title', title);
+  }
+
+  if (desc) {
+    content += buildElement('desc', desc);
+  }
+
+  // path
   var result = this.toPath(text, options);
   var path   = result.path;
   var inner  = path;
 
   if (Array.isArray(path)) {
     if (options.grouped !== false) {
-      inner = '<g' + parseAttr(options.g) + '>' + path.join('') + '</g>';
+      inner = buildElement('g', options.g, path.join(''));
     } else {
       inner = path.join('');
     }
   }
 
+  content += inner;
+
+  var x      = options.x || 0;
+  var y      = options.y || 0;
   var width  = result.width;
   var height = result.height;
 
@@ -208,7 +216,7 @@ StringToPath.prototype.toSVG = function (text, options) {
     attr = mergeAttr(attr, options.svg);
   }
 
-  result.svg = '<svg' + parseAttr(attr) + '>' + inner + '</svg>';
+  result.svg = buildElement('svg', attr, content);
 
   return result;
 };
@@ -331,6 +339,10 @@ function parsePadding(options) {
   padding.bottom = options.paddingBottom || options['padding-bottom'] || padding.bottom;
 
   return padding;
+}
+
+function buildElement(tagName, content, attr) {
+  return '<' + tagName + parseAttr(attr) + '>' + content + '</' + tagName + '>';
 }
 
 
