@@ -175,11 +175,11 @@ StringToPath.prototype.toSVG = function (text, options) {
   var desc    = options.desc;
 
   if (title) {
-    content += buildElement('title', title);
+    content += buildElement('title', null, title);
   }
 
   if (desc) {
-    content += buildElement('desc', desc);
+    content += buildElement('desc', null, desc);
   }
 
   // path
@@ -341,8 +341,10 @@ function parsePadding(options) {
   return padding;
 }
 
-function buildElement(tagName, content, attr) {
-  return '<' + tagName + parseAttr(attr) + '>' + content + '</' + tagName + '>';
+function buildElement(tagName, attr, content) {
+  return '<' + tagName + parseAttr(attr) + '>'
+    + (content || '')
+    + '</' + tagName + '>';
 }
 
 
