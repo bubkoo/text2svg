@@ -78,7 +78,7 @@ Convert the `text` to `<svg>` element. Return:
     height  : height,  // Int, total Height
     pathData: pathData // Array/String
     path    : path     // Array/String
-    svg     : svg
+    svg     : svg      // String
 }
 ```
 
@@ -118,9 +118,13 @@ This option only works for `toSVG()`.
 
 If specified will generate a `<title>` at the root of `<svg>`. (default: `text`)
 
+This option only works for `toSVG()`.
+
 ### desc
 
 If specified will generate a `<desc>` at the root of `<svg>`. (default: `null`)
+
+This option only works for `toSVG()`.
 
 ### Styling the elements
 
@@ -132,7 +136,7 @@ Specify the padding of the `<path>` relative to the `<svg>`:
 - options.paddingBottom/options['padding-bottom']
 - options.paddingLeft/options['padding-left']
 
-The `<svg>`, `<path>` and `<g>` element can be styled by any valid attribute styles. 
+The `<svg>`, `<path>` and `<g>` elements can be styled by any valid attributes. 
 
 The generated `<svg>` has the following default attributes:
 
@@ -148,7 +152,7 @@ The generated `<svg>` has the following default attributes:
 }
 ```
 
-We can add/update/remove by `options.svg`, except for `width`, `height` and `viewbox`, you should not specify them :
+We can **add**/**update**/**remove** by `options.svg`:
 
 ```js
 options.svg = {
@@ -160,7 +164,7 @@ options.svg = {
 
 **Note** that the `width`, `height` and `viewbox` can't be specified.
 
-Styling the `<path>` by `options.path`. If `divided` is `true` we can style the individual `<path>` element by `options.path?`, and the `?` is the index of each char in the `text`:
+Styling the `<path>` by `options.path`. If `divided` is `true` we can style the individual `<path>` element by `options.path?`, which `?` is the index of each char in the `text`:
 
 ```js
 // style for every path(s)
