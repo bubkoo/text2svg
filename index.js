@@ -2,6 +2,7 @@ var fs       = require('fs');
 var path     = require('path');
 var opentype = require('opentype.js');
 
+
 var cache = {};
 
 function StringToPath(font) {
@@ -112,9 +113,12 @@ StringToPath.prototype.toPathData = function (text, options) {
     }
   }
 
+  var width  = fixToInt(x + padding.right + strokeWidth);
+  var height = fixToInt(ascender - descender + padding.top + padding.bottom + strokeWidth * 2);
   var result = {
-    width: x + padding.right + strokeWidth,
-    height: ascender - descender + padding.top + padding.bottom + strokeWidth * 2
+    glyphs: glyphs,
+    width: width,
+    height: height
   };
 
 
@@ -143,11 +147,11 @@ StringToPath.prototype.toPath = function (text, options) {
   var attr = options.path;
   var comm = parseAttr(attr);
 
-  var result = this.toPathData(text, options);
-  var data   = result.pathData;
+  var result   = this.toPathData(text, options);
+  var pathData = result.pathData;
 
-  if (Array.isArray(data)) {
-    result.path = data.map(function (pathData, index) {
+  if (Array.isArray(pathData)) {
+    result.path = pathData.map(function (pathData, index) {
       if (!pathData) {
         return '';
       }
@@ -162,7 +166,7 @@ StringToPath.prototype.toPath = function (text, options) {
       return '<path' + curr + ' d="' + pathData + '"></path>';
     });
   } else {
-    result.path = '<path' + comm + ' d="' + data + '"></path>';
+    result.path = '<path' + comm + ' d="' + pathData + '"></path>';
   }
 
   return result;
@@ -187,13 +191,14 @@ StringToPath.prototype.toSVG = function (text, options) {
     }
   }
 
-  var width  = fixToInt(result.width);
-  var height = fixToInt(result.height);
+  var width  = result.width;
+  var height = result.height;
 
   var attr = {
     'version': '1.1',
     'xmlns': 'http://www.w3.org/2000/svg',
     'xmlns:xlink': 'http://www.w3.org/1999/xlink',
+    'role': 'img',
     'width': width,
     'height': height,
     'viewbox': [x, y, width, height].join(' ')
