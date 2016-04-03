@@ -185,4 +185,4 @@ As the same `options.g` specified the style of `<g>` element.
  
 ## Related
    
-- [logo.svg](https://github.com/bubkoo/logo.svg)
+- [logo.svg](https://github.com/bubkoo/logo.svg) Generate a svg logo, then you can embed it in you `README.md`.
