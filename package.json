@@ -1,13 +1,13 @@
 {
-  "name": "string-to-path",
+  "name": "text2svg",
   "version": "0.0.1",
-  "description": "Convert string to svg path.",
+  "description": "Convert text to svg path.",
   "main": "index.js",
   "author": "bubkoo",
   "license": "MIT",
   "keywords": [
     "convert",
-    "string",
+    "text",
     "svg",
     "path",
     "pathdata",

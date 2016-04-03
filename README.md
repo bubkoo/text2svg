@@ -1,53 +1,53 @@
-# string-to-path
+# text2svg
 
-> Convert string to svg path
+> Convert text to svg path
 
-[![MIT License](https://img.shields.io/badge/license-MIT_License-green.svg?style=flat-square)](https://github.com/bubkoo/string-to-path/blob/master/LICENSE) 
+[![MIT License](https://img.shields.io/badge/license-MIT_License-green.svg?style=flat-square)](https://github.com/bubkoo/text2svg/blob/master/LICENSE) 
 
-[![npm:](https://img.shields.io/npm/v/string-to-path.svg?style=flat-square)](https://www.npmjs.com/packages/string-to-path)
-[![downloads:?](https://img.shields.io/npm/dm/string-to-path.svg?style=flat-square)](https://www.npmjs.com/packages/string-to-path)
-[![dependencies:?](https://img.shields.io/david/bubkoo/string-to-path.svg?style=flat-square)](https://david-dm.org/bubkoo/string-to-path)
+[![npm:](https://img.shields.io/npm/v/text2svg.svg?style=flat-square)](https://www.npmjs.com/packages/text2svg)
+[![downloads:?](https://img.shields.io/npm/dm/text2svg.svg?style=flat-square)](https://www.npmjs.com/packages/text2svg)
+[![dependencies:?](https://img.shields.io/david/bubkoo/text2svg.svg?style=flat-square)](https://david-dm.org/bubkoo/text2svg)
 
 
 ## Install
 
 ```
-$ npm install string-to-path --save
+$ npm install text2svg --save
 ```
 
 ## Usage
 
 ```js
-var StringToPath = require('string-to-path');
-var stringToPath = new StringToPath('localFontPath');
-var svg = stringToPath.toSVG('something', options);
+var Text2svg = require('text2svg');
+var text2svg = new Text2svg('localFontPath');
+var svg = text2svg.toSVG('something', options);
 ```
 
 ## API
 
 ### Constructor
 
-There are three ways to get an instance of `StringToPath`:
+There are three ways to get an instance of `Text2svg`:
 
-- new StringToPath('localFontPath')
-- StringToPath.loadSync('localFontPath')
-- StringToPath.load('fontUrl', callback)
+- new Text2svg('localFontPath')
+- Text2svg.loadSync('localFontPath')
+- Text2svg.load('fontUrl', callback)
 
 The `callback` function looks like:
 
 ```js
-function (stringToPath) {
+function (text2svg) {
     // ...
 }
 ``` 
 
-### stringToPath.toPathData(text, options)
+### text2svg.toPathData(text, options)
 
 Convert the `text` to path data, which is the attribute value of `d` in the `<path>` element. Return:
 
 ```js
 {
-	width   : width,   // Int, total width
+    width   : width,   // Int, total width
     height  : height,  // Int, total Height
     pathData: pathData // Array/String
 }
@@ -55,26 +55,26 @@ Convert the `text` to path data, which is the attribute value of `d` in the `<pa
 
 If `options.divided` is `true` the pathData will be an Array.
 
-### stringToPath.toPath(text, options)
+### text2svg.toPath(text, options)
 
 Convert the `text` to `<path>` element(s). Return:
 
 ```js
 {
-	width   : width,   // Int, total width
+    width   : width,   // Int, total width
     height  : height,  // Int, total Height
     pathData: pathData // Array/String
     path    : path     // Array/String
 }
 ```
 
-### stringToPath.toSVG(text, options)
+### text2svg.toSVG(text, options)
  
 Convert the `text` to `<svg>` element. Return:
 
 ```js
 {
-	width   : width,   // Int, total width
+    width   : width,   // Int, total width
     height  : height,  // Int, total Height
     pathData: pathData // Array/String
     path    : path     // Array/String
@@ -181,8 +181,8 @@ options.path0 = {
 
 As the same `options.g` specified the style of `<g>` element. 
 
-## Contributing
 
-Contributing are highly welcome!  
-
-
+ 
+## Related
+   
+- [logo.svg](https://github.com/bubkoo/logo.svg)
