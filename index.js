@@ -5,7 +5,7 @@ var opentype = require('opentype.js');
 
 var cache = {};
 
-function StringToPath(font) {
+function Text2svg(font) {
 
   if (!font) {
     throw new Error('Bad font');
@@ -15,18 +15,18 @@ function StringToPath(font) {
     if (cache[font]) {
       font = cache[font];
     } else {
-      return StringToPath.loadSync(font);
+      return Text2svg.loadSync(font);
     }
   }
 
   this.font = font;
 }
 
-StringToPath.load = function (url, callback) {
+Text2svg.load = function (url, callback) {
 
   if (cache[url]) {
 
-    callback(new StringToPath(cache[url]));
+    callback(new Text2svg(cache[url]));
 
   } else {
 
@@ -40,21 +40,21 @@ StringToPath.load = function (url, callback) {
         cache[url] = font;
 
         if (callback && typeof callback === 'function') {
-          callback(new StringToPath(font));
+          callback(new Text2svg(font));
         }
       }
     });
   }
 };
 
-StringToPath.loadSync = function (file) {
+Text2svg.loadSync = function (file) {
 
   if (!file) {
     throw new Error('The path of font must be specified.');
   }
 
   if (cache[file]) {
-    return new StringToPath(cache[file]);
+    return new Text2svg(cache[file]);
   }
 
   var uri  = path.isAbsolute(file) ? file : path.resolve(process.cwd(), file);
@@ -63,16 +63,16 @@ StringToPath.loadSync = function (file) {
   // cache for speed up
   cache[file] = font;
 
-  return new StringToPath(font);
+  return new Text2svg(font);
 };
 
-StringToPath.prototype.toPathData = function (text, options) {
+Text2svg.prototype.toPathData = function (text, options) {
 
   options = options || {};
 
   var kerning   = options.kerning !== false;
   var divided   = options.divided === true;
-  var spacing   = options.letterSpacing || 0;
+  var spacing   = options.spacing || 0;
   var fontSize  = options.fontSize || 72;
   var fontScale = 1 / this.font.unitsPerEm * fontSize;
 
@@ -140,7 +140,7 @@ StringToPath.prototype.toPathData = function (text, options) {
   return result;
 };
 
-StringToPath.prototype.toPath = function (text, options) {
+Text2svg.prototype.toPath = function (text, options) {
 
   options = options || {};
 
@@ -166,7 +166,7 @@ StringToPath.prototype.toPath = function (text, options) {
   return result;
 };
 
-StringToPath.prototype.toSVG = function (text, options) {
+Text2svg.prototype.toSVG = function (text, options) {
 
   options = options || {};
 
@@ -351,4 +351,4 @@ function buildElement(tagName, attr, content) {
 // exports
 // -------
 
-module.exports = StringToPath;
+module.exports = Text2svg;
