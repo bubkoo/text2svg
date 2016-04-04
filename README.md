@@ -169,12 +169,12 @@ Styling the `<path>` by `options.path`. If `divided` is `true` we can style the 
 ```js
 // style for every path(s)
 options.path  = {
-    fill: yellow
+    'fill': yellow
 };
 
 // style the first char
 options.path0 = {
-    fill: '#FF0000',
+    'fill': '#FF0000',
     'stroke': '#000000'
 };
 ```
