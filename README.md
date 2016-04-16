@@ -3,16 +3,13 @@
 > Convert text to svg path
 
 [![MIT License](https://img.shields.io/badge/license-MIT_License-green.svg?style=flat-square)](https://github.com/bubkoo/text2svg/blob/master/LICENSE) 
-
 [![npm:](https://img.shields.io/npm/v/text2svg.svg?style=flat-square)](https://www.npmjs.com/packages/text2svg)
-[![downloads:?](https://img.shields.io/npm/dm/text2svg.svg?style=flat-square)](https://www.npmjs.com/packages/text2svg)
-[![dependencies:?](https://img.shields.io/david/bubkoo/text2svg.svg?style=flat-square)](https://david-dm.org/bubkoo/text2svg)
 
 
 ## Install
 
 ```
-$ npm install text2svg --save
+$ npm install --save text2svg 
 ```
 
 ## Usage
@@ -41,7 +38,7 @@ function (text2svg) {
 }
 ``` 
 
-### text2svg.toPathData(text, options)
+### toPathData(text, options)
 
 Convert the `text` to path data, which is the attribute value of `d` in the `<path>` element. Return:
 
@@ -55,7 +52,7 @@ Convert the `text` to path data, which is the attribute value of `d` in the `<pa
 
 If `options.divided` is `true` the pathData will be an Array.
 
-### text2svg.toPath(text, options)
+### toPath(text, options)
 
 Convert the `text` to `<path>` element(s). Return:
 
@@ -68,7 +65,7 @@ Convert the `text` to `<path>` element(s). Return:
 }
 ```
 
-### text2svg.toSVG(text, options)
+### toSVG(text, options)
  
 Convert the `text` to `<svg>` element. Return:
 
@@ -186,3 +183,10 @@ As the same `options.g` specified the style of `<g>` element.
 ## Related
    
 - [logo.svg](https://github.com/bubkoo/logo.svg) Generate a svg logo, then you can embed it in you `README.md`.
+
+
+## Contributing
+
+Pull requests and stars are highly welcome.
+
+For bugs and feature requests, please [create an issue](https://github.com/bubkoo/text2svg/issues/new).

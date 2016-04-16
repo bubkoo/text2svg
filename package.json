@@ -1,6 +1,6 @@
 {
   "name": "text2svg",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Convert text to svg path.",
   "main": "index.js",
   "author": "bubkoo",
@@ -19,12 +19,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bubkoo/string-to-path.git"
+    "url": "git+https://github.com/bubkoo/text2svg.git"
   },
   "bugs": {
-    "url": "https://github.com/bubkoo/string-to-path/issues"
+    "url": "https://github.com/bubkoo/text2svg/issues"
   },
-  "homepage": "https://github.com/bubkoo/string-to-path#readme",
+  "homepage": "https://github.com/bubkoo/text2svg#readme",
   "dependencies": {
     "opentype.js": "^0.6.2"
   }
