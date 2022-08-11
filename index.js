@@ -209,7 +209,7 @@ Text2svg.prototype.toSVG = function (text, options) {
     'role': 'img',
     'width': width,
     'height': height,
-    'viewbox': [x, y, width, height].join(' ')
+    'viewBox': [x, y, width, height].join(' ')
   };
 
   if (options.svg) {
