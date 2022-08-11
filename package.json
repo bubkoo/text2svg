@@ -27,5 +27,9 @@
   "homepage": "https://github.com/bubkoo/text2svg#readme",
   "dependencies": {
     "opentype.js": "^0.6.2"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
   }
 }
